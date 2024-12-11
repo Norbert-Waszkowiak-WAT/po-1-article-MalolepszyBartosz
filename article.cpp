@@ -1,46 +1,37 @@
-#ifndef ARTICLE
-#define ARTICLE 
-#include <string>
+#ifndef ARTICLE 
+#define ARTICLE
 #include <iostream>
+#include <string>
 #include "author.cpp"
 using namespace std;
 
 class Article
 {
     private:
-        string title;
-        Author author;
-        int publicationYear;
-        string journal;
-    
+    string title;
+    Author author;
+    int publicationYear;
+    string journal;
     public:
-        Article():title(""),author(Author()),publicationYear(0),journal(""){}
-        Article (string articleTitle, Author &articleAuthor, int year, string journalname)
-            :title(articleTitle), author(articleAuthor), publicationYear(year), journal(journalname) {};
-        Article(Article &other):title(other.title), author(other.author), publicationYear(other.publicationYear),journal(other.journal){};
-
+    Article():title(""),author(Author()),publicationYear(0),journal(""){};
+    Article (string articleTitle, Author &articleAuthor, int year, string journalName)
+        :title(articleTitle), author(articleAuthor), publicationYear(year), journal(journalName){};
+    Article(Article &other):title(other.title), author(other.author), publicationYear(other.publicationYear), journal(other.journal){};
     
-    void displayInfo() {
-        cout << "Article Title: " << title << endl;
-        cout << "Author: " << author.toString() << endl;
-        cout << "Publication Year: " << publicationYear << endl;
-        cout << "Journal: " << journal << endl;
-    }
-
-    string getTitle() {
+    void displayInformation(){
+        cout << title << endl << author.toString() << endl << publicationYear << endl << journal << endl;
+    };
+    string getTitle(){
         return title;
-    }
-
-    Author getAuthor() const {
+    };
+    Author getAuthor(){
         return author;
-    }
-
-    int getPublicationYear() const {
+    };
+    int getPublicationYear(){
         return publicationYear;
-    }
-
-    string getJournal() const {
+    };
+    string getJournal(){
         return journal;
-    }
+    };
 };
 #endif

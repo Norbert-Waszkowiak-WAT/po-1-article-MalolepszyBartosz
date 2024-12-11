@@ -1,11 +1,11 @@
-#ifndef BOOK
+#ifndef BOOK 
 #define BOOK 
-#include <iostream>
 #include <string>
-#include "chapter.cpp"
+#include <iostream>
+#include <vector>
 #include "author.cpp"
 #include "article.cpp"
-#include <vector>
+#include "chapter.cpp"
 
 using namespace std;
 
@@ -15,20 +15,17 @@ private:
     Author author;
     int publicationYear;
     vector<Chapter> chapters;
-
 public:
-    Book(){};
-    Book(string title, Author author, int publicationYear, vector<Chapter> chapters): title(title), author(author), publicationYear(publicationYear),chapters(chapters){};
-
-    void addChapter(const Chapter &chapter){
+    Book(): title(""), author(Author()), publicationYear(0), chapters(){};
+    Book(string bookTitle, Author bookAuthor, int year, vector<Chapter> bookChapters)
+        :title(bookTitle), author(bookAuthor), publicationYear(year), chapters(bookChapters){};
+    
+    void addChapter (Chapter &chapter)
+    {
         chapters.push_back(chapter);
     }
     void displayInfo(){
-        cout << title << " ";
-        cout << author.getName() << " ";
-        cout << author.getSurname() << " ";
-        cout << publicationYear << " ";
-        cout << chapters.size() << endl;
+        cout << title << author.toString() << publicationYear;
     }
     string getTitle(){
         return title;
@@ -42,8 +39,5 @@ public:
     vector<Chapter> getChapters(){
         return chapters;
     }
-
-
 };
-
 #endif
